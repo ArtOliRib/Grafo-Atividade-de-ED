@@ -8,29 +8,40 @@ public class Main {
         Scanner fl = new Scanner(System.in);
         BufferedReader br = null;
 
-        System.out.println("Escolha um dos seguintes arquivos teste para fazer as operaçoes");
-        System.out.println("1.pcv4.txt\n2.pcv10.txt\n3.pcv50.txt\n4.pcv177.txt");
-        int s = fl.nextInt();
+        String file = args[0];
 
-        switch (s) { // switch-case para a escolha do arquivo de teste.
-            case (1):
-                br = new BufferedReader(new FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv4.txt"));
-                break;
-            case (2):
-                br = new BufferedReader(new FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv10.txt"));
-                break;
-            case (3):
-                br = new BufferedReader(new FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv50.txt"));
-                break;
-            case (4):
-                br = new BufferedReader(new FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv177.txt"));
-                break;
-            default:
-                System.out.println("Voce selecionou um valor invalido.");
+        br = new BufferedReader(new FileReader(file));
 
-                return;
-
-        }
+        /*
+         * System.out.
+         * println("Escolha um dos seguintes arquivos teste para fazer as operaçoes");
+         * System.out.println("1.pcv4.txt\n2.pcv10.txt\n3.pcv50.txt\n4.pcv177.txt");
+         * int s = fl.nextInt();
+         * 
+         * switch (s) { // switch-case para a escolha do arquivo de teste.
+         * case (1):
+         * br = new BufferedReader(new
+         * FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv4.txt"));
+         * break;
+         * case (2):
+         * br = new BufferedReader(new
+         * FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv10.txt"));
+         * break;
+         * case (3):
+         * br = new BufferedReader(new
+         * FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv50.txt"));
+         * break;
+         * case (4):
+         * br = new BufferedReader(new
+         * FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv177.txt"));
+         * break;
+         * default:
+         * System.out.println("Voce selecionou um valor invalido.");
+         * 
+         * return;
+         * 
+         * }
+         */
 
         int n = Integer.parseInt(br.readLine());
 
@@ -62,8 +73,10 @@ public class Main {
         grafo.printMatriz(); // imprime a matriz que foi passada para o objeto.
 
         System.out.println();
-        System.out.println("Este grafo tem " + grafo.getNun_vertices() + " Vertices"); // retorna quantos vertices tem o
-                                                                                       // grafo passado para o objeto.
+        System.out.println("Este grafo tem " + grafo.getNun_vertices() + " Vertices"); // retorna quantos vertices
+                                                                                       // tem o
+                                                                                       // grafo passado para o
+                                                                                       // objeto.
         System.out.println();
 
         Scanner sc = new Scanner(System.in);
@@ -94,6 +107,7 @@ public class Main {
                 int z = sc.nextInt();
                 grafo.DFS(z - 1);// Chamada do metodo que faz a pesquisa em profundidade.
                 return;
+
         }
 
     }
