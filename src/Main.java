@@ -1,6 +1,5 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
@@ -13,7 +12,7 @@ public class Main {
         System.out.println("1.pcv4.txt\n2.pcv10.txt\n3.pcv50.txt\n4.pcv177.txt");
         int s = fl.nextInt();
 
-        switch (s) {
+        switch (s) { // switch-case para a escolha do arquivo de teste.
             case (1):
                 br = new BufferedReader(new FileReader("C:/Users/lande/Desktop/LP2/Grafo/src/pcv4.txt"));
                 break;
@@ -28,20 +27,21 @@ public class Main {
                 break;
             default:
                 System.out.println("Voce selecionou um valor invalido.");
+
                 return;
 
         }
 
         int n = Integer.parseInt(br.readLine());
-        int v = 0;
-        int t = 0;
 
-        grafo grafo = new grafo(n);
+        grafo grafo = new grafo(n); // iniciação do objeto "grafo" a partir da quantidade de vertices do grafo do
+                                    // arquivo.
 
+        // Bloco que passa a matriz de adjacencias do arquivo para o objeto "grafo" e
+        // tambem forma a lista de adjacencias do grafo do arquivo.
         int l = 0;
         String line;
         while ((line = br.readLine()) != null) {
-            // String Str_nun = line.trim();
             String[] numeros = line.split("\\s+");
             int c = 0;
             for (String numStr : numeros) {
@@ -59,27 +59,42 @@ public class Main {
         }
         br.close();
 
-        grafo.BFS(0, 3);
-        grafo.printMatriz();
+        grafo.printMatriz(); // imprime a matriz que foi passada para o objeto.
 
         System.out.println();
-        System.out.println("Este grafo tem " + grafo.getNun_vertices() + " Vertices");
+        System.out.println("Este grafo tem " + grafo.getNun_vertices() + " Vertices"); // retorna quantos vertices tem o
+                                                                                       // grafo passado para o objeto.
         System.out.println();
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println();
+        // Escolha de um dos dois tipos de pesquisa.
         System.out.println(
-                "Escolha os vertices para que seja feita a pesquisa (Os vertices estao enumerados apartir do numero 1):");
+                "Escolha que tipo de operação voce deseja fazer:\n1.Caminho entre dois vertices.\n2.pesquisa em profundidade");
+        int j = sc.nextInt();
 
-        System.out.println("Vertice inicial:");
-        v = sc.nextInt();
-        System.out.println("Vertice final:");
-        t = sc.nextInt();
+        switch (j) {
+            case 1:
+                System.out.println();
+                System.out.println(
+                        "Escolha os vertices para que seja feita a pesquisa em largura (Os vertices estao enumerados apartir do numero 1):");
 
-        sc.close();
-
-        grafo.BFS((v - 1), (t - 1));
+                System.out.println("Vertice inicial:");
+                int v = sc.nextInt();
+                System.out.println("Vertice final:");
+                int t = sc.nextInt();
+                System.out.println();
+                grafo.BFS((v - 1), (t - 1));// Chamada do metodo que faz a pesquisa em largura.
+                return;
+            case 2:
+                System.out.println();
+                System.out.println(
+                        "Escolha o vertice inicial para que seja feita a pesquisa em profundodade (Os vertices estao enumerados apartir do numero 1)");
+                System.out.println("Vertice inicial:");
+                int z = sc.nextInt();
+                grafo.DFS(z - 1);// Chamada do metodo que faz a pesquisa em profundidade.
+                return;
+        }
 
     }
 
