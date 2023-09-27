@@ -5,6 +5,10 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception {
 
+        // Metodo 1: iniciação por linha de comando atraves de:
+        // javac *.java
+        // java Main "nome do arquivo".txt.
+
         Scanner fl = new Scanner(System.in);
         BufferedReader br = null;
 
@@ -12,6 +16,7 @@ public class Main {
 
         br = new BufferedReader(new FileReader(file));
 
+        // Metodo 2: Metodo de seleção de arquivos de teste em tempo de execução.
         /*
          * System.out.
          * println("Escolha um dos seguintes arquivos teste para fazer as operaçoes");
